@@ -2,7 +2,10 @@
 <h1>
 Currency Converter 💷
 </h1>
+<img src='./images/app-snap.png' width='350' >
 </div>
+
+---
 
 ### App Info
 

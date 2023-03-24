@@ -2,24 +2,58 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<link rel="icon" type="image/svg+xml" href="./images/windows-icon.png" />
+		<link rel="icon" type="image/svg+xml" href="./images/code.png" />
 		<link rel="stylesheet" href="/style.css" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Currency Converter</title>
 	</head>
 	<body>
-		<script type="module" src="/main.js"></script>
-		<div id="app">
-			<div class="monitor">
-				<h1 class="title">Currency Converter</h1>
+		<div id="pc">
+			<div class="desktop">
+				<div class="screen">
+					<div class="modal-box border">
+						<div class="header-bar">
+							<div class="modal-title">
+								<img class="icon-sm" src="./images/search-globe.png" />
+								<p>Currency Converter</p>
+							</div>
+							<div class="modal-control">
+								<button class="minimize bold border">_</button>
+								<button class="maximize bold border">O</button>
+								<button class="close bold border">X</button>
+							</div>
+						</div>
+						<div class="modal-body">
+							<label for="amount">Amount:</label>
+							<input type="text" />
+							<label for="from-currency">From:</label>
+							<select type="text" id="from-currency">
+								<option value="from-currency">Polish Złoty</option>
+							</select>
+							<label for="from-currency">Convert To:</label>
+							<select type="text" id="to-currency">
+								<option value="to-currency">Great British Pound</option>
+							</select>
+						</div>
+						<div class="selections">
+							<button class="btn-md"><span>Convert</span></button>
+							<button class="btn-md"><span>Switch</span></button>
+							<button class="btn-md"><span>Reset</span></button>
+						</div>
+					</div>
+				</div>
 				<div class="taskbar">
-					<button class="start-btn">
-						<img src="./images/windows-icon.png" />
-						<div class="start bold">Start</div>
+					<button class="start-btn btn-sm">
+						<span>
+							<img class="icon-sm" src="./images/windows-icon.png" />
+							<div class="start bold">Start</div>
+						</span>
 					</button>
-					<div id="time" class="time"></div>
+					<div class="taskbar-item inset">Currency Converter</div>
+					<div id="time" class="taskbar-item inset"></div>
 				</div>
 			</div>
 		</div>
+		<script type="module" src="/main.js"></script>
 	</body>
 </html>

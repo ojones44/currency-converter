@@ -21,6 +21,8 @@ Font filetypes:
 [x] SVG - Legacy iOS
 */
 
+/* TODO Need to refactor, repetitive */
+
 :root {
 	/* Colours */
 	--bg-primary: #008080;
@@ -35,6 +37,8 @@ Font filetypes:
 	--dialog-gray: #808080;
 	--dialog-gray-light: #b5b5b5;
 	--link-blue: #0000ff;
+
+	--taskbar-height: 40px;
 
 	/* Font */
 	font-family: W95, sans-serif;
@@ -55,6 +59,23 @@ html {
 	box-sizing: inherit;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	font-family: inherit;
+	margin: 0;
+}
+
+input,
+select,
+option {
+	font-family: inherit;
+}
+
 body {
 	margin: 0;
 	padding: 0;
@@ -67,6 +88,36 @@ img {
 	height: auto;
 }
 
+button {
+	font-family: W95;
+	background-color: var(--surface);
+	width: 82px;
+	height: 1.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: none;
+	box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey,
+		inset 2px 2px #dfdfdf;
+}
+
+button span {
+	font-family: W95;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+button:active {
+	box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a,
+		inset -2px -2px #dfdfdf, inset 2px 2px grey;
+}
+
+button span:active {
+	width: 100%;
+	border: 0.5px dotted black;
+}
+
 /* Utility Classes */
 
 .bold {
@@ -77,24 +128,67 @@ img {
 	letter-spacing: 2px;
 }
 
-/* Styling Classes */
-
-.title {
-	font-weight: 400;
-	text-align: center;
+.inset {
+	background-color: var(--surface);
+	padding: 3px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a,
+		inset -2px -2px #dfdfdf, inset 2px 2px grey;
 }
 
-.monitor {
+.border {
+	box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey,
+		inset 2px 2px #dfdfdf;
+}
+
+.border-reverse {
+	box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a,
+		inset -2px -2px #dfdfdf, inset 2px 2px grey;
+}
+
+.btn-sm {
+	width: 72px;
+}
+
+.btn-md {
+	width: 82px;
+}
+
+.icon-sm {
+	width: 22px;
+}
+
+/* Styling Classes */
+
+.desktop {
+	height: calc(100vh - var(--taskbar-height));
+	display: flex;
+	margin: 0 auto;
+	justify-content: center;
+	align-items: center;
+}
+
+.screen {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: center;
+	align-items: center;
+	width: 50%;
+}
+
+.title {
+	padding: 1rem;
+	font-weight: 400;
+	text-align: center;
 }
 
 .taskbar {
 	position: absolute;
 	padding: 3px;
 	bottom: 0;
-	height: 40px;
+	height: var(--taskbar-height);
 	width: 100%;
 	background-color: var(--surface);
 	display: flex;
@@ -102,25 +196,85 @@ img {
 	border-top: 2px solid white;
 }
 
-.taskbar button {
-	background-color: var(--surface);
-	border-color: white black black white;
-	margin: 2px;
-}
-
-.time {
-	padding: 3px;
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
-}
-
 .start-btn {
-	font-family: W95;
+	height: 95%;
+}
+
+.start {
+	font-size: 1.1rem;
+	padding-left: 2px;
+	letter-spacing: 1px;
+}
+
+.taskbar-item {
+	padding-left: 0.3rem;
+	padding-right: 0.3rem;
+}
+
+.modal-box {
 	padding: 3px;
-	font-size: 1.2rem;
+	background-color: var(--surface);
+	width: 20rem;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
-	justify-content: center;
-	width: px;
+	justify-content: space-between;
+	height: 23rem;
+}
+
+.modal-title {
+	padding: 2px;
+	display: flex;
+	justify-content: flex-start;
+}
+
+.modal-title img {
+	width: 18px;
+}
+
+.modal-control {
+	padding: 2px;
+	display: flex;
+	justify-content: space-between;
+	color: white;
+}
+
+.modal-box select {
+	min-width: 10rem;
+}
+
+.modal-control button {
+	background-color: var(--surface);
+	display: flex;
+	width: 1.2rem;
+	height: 1.2rem;
+}
+
+.modal-body {
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 1rem;
+}
+
+.modal-body label {
+	padding: 1rem 0;
+}
+
+.header-bar {
+	background: linear-gradient(
+		90deg,
+		var(--dialog-blue),
+		var(--dialog-blue-light)
+	);
+	color: white;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.selections {
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	padding-bottom: 1rem;
 }

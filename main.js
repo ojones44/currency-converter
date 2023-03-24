@@ -1,26 +1,22 @@
 const time = document.getElementById('time');
-// const inset = document.querySelector('.time');
 
 function setTime() {
 	let hour = new Date().getHours();
 	let minute = new Date().getMinutes();
-	// let second = new Date().getSeconds();
 	let suffix;
 
-	if (hour < 12) {
-		suffix = 'AM';
-	} else {
-		suffix = 'PM';
+	hour < 12 ? (suffix = 'AM') : (suffix = 'PM');
+
+	function prefixZero(num) {
+		if (num < 10) {
+			return `0${num}`;
+		}
+
+		return num;
 	}
 
-	if (minute < 10) {
-		time.innerHTML = `${hour}:0${minute} ${suffix}`;
-		return;
-	}
-
-	time.innerHTML = `${hour}:${minute} ${suffix}`;
+	time.innerHTML = `${prefixZero(hour)}:${prefixZero(minute)} ${suffix}`;
 }
 
 setTime();
 setInterval(setTime, 1000);
-time.style.borderStyle = 'inset';
