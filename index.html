@@ -25,20 +25,21 @@
 						</div>
 						<div class="modal-body">
 							<label for="amount">Amount:</label>
-							<input type="text" />
+							<input id="amount" type="text" value="0" />
 							<label for="from-currency">From:</label>
 							<select type="text" id="from-currency">
-								<option value="from-currency">Polish Złoty</option>
+								<option value="" selected>Please select</option>
 							</select>
 							<label for="from-currency">Convert To:</label>
 							<select type="text" id="to-currency">
-								<option value="to-currency">Great British Pound</option>
+								<option value="" selected>Please select</option>
 							</select>
+							<p id="result"></p>
 						</div>
 						<div class="selections">
-							<button class="btn-md"><span>Convert</span></button>
-							<button class="btn-md"><span>Switch</span></button>
-							<button class="btn-md"><span>Reset</span></button>
+							<button id="convert" class="btn-md"><span>Convert</span></button>
+							<button id="switch" class="btn-md"><span>Switch</span></button>
+							<button id="reset" class="btn-md"><span>Reset</span></button>
 						</div>
 					</div>
 				</div>

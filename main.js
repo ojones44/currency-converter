@@ -1,22 +1,71 @@
-const time = document.getElementById('time');
+// Module Imports
+import setTime from './modules/setTime';
 
-function setTime() {
-	let hour = new Date().getHours();
-	let minute = new Date().getMinutes();
-	let suffix;
-
-	hour < 12 ? (suffix = 'AM') : (suffix = 'PM');
-
-	function prefixZero(num) {
-		if (num < 10) {
-			return `0${num}`;
-		}
-
-		return num;
-	}
-
-	time.innerHTML = `${prefixZero(hour)}:${prefixZero(minute)} ${suffix}`;
-}
+// On page load functions
 
 setTime();
 setInterval(setTime, 1000);
+
+// API calls
+
+const getConversionRate = async (from, to) => {
+	const url = `https://api.exchangerate.host/convert?from=${from}&to=${to}`;
+	const res = await fetch(url);
+	const json = await res.json();
+
+	return json['info']['rate'];
+};
+
+const getSymbols = async () => {
+	const url = 'https://api.exchangerate.host/symbols';
+	const res = await fetch(url);
+	const json = await res.json();
+
+	return json.symbols;
+};
+
+const createOptionElement = (element, currency) => {
+	const optionElement = document.createElement('option');
+
+	optionElement.value = currency.code;
+	optionElement.textContent = currency.description;
+
+	element.appendChild(optionElement);
+};
+
+const setOptionElements = async (element) => {
+	const symbols = await getSymbols();
+	Object.keys(symbols).forEach((currency) =>
+		createOptionElement(element, symbols[currency])
+	);
+};
+
+const setupCurrencies = () => {
+	const fromCurrency = document.getElementById('from-currency');
+	const toCurrency = document.getElementById('to-currency');
+
+	setOptionElements(fromCurrency);
+	setOptionElements(toCurrency);
+};
+
+const setupConvertListener = () => {
+	const convertButton = document.getElementById('convert');
+
+	convertButton.addEventListener('click', handleConvert);
+};
+
+const handleConvert = async () => {
+	const from = document.getElementById('from-currency');
+	const to = document.getElementById('to-currency');
+	const amount = document.getElementById('amount').value;
+	const result = document.getElementById('result');
+
+	const rate = await getConversionRate(from.value, to.value);
+
+	const conversion = Number(amount) * rate;
+
+	result.innerHTML = `${amount} ${from.value} = ${conversion} ${to.value}`;
+};
+
+setupCurrencies();
+setupConvertListener();
