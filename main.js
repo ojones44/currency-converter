@@ -1,11 +1,12 @@
 // Module Imports
 import setTime from './modules/setTime';
+import sound from './assets/error.mp3';
 
 // On page load functions
 
 setTime();
 setInterval(setTime, 1000);
-const errorSound = new Audio('./sounds/error.mp3');
+const errorSound = new Audio(sound);
 
 // API calls
 
