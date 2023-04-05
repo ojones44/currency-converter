@@ -278,3 +278,7 @@ button span:active {
 	justify-content: space-around;
 	padding-bottom: 1rem;
 }
+
+.result {
+	margin-top: 10px;
+}

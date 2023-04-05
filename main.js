@@ -5,6 +5,7 @@ import setTime from './modules/setTime';
 
 setTime();
 setInterval(setTime, 1000);
+const errorSound = new Audio('./sounds/error.mp3');
 
 // API calls
 
@@ -64,8 +65,16 @@ const handleConvert = async () => {
 
 	const conversion = Number(amount) * rate;
 
-	result.innerHTML = `${amount} ${from.value} = ${conversion} ${to.value}`;
+	result.innerHTML = `${amount} ${from.value} = ${conversion.toFixed(3)} ${
+		to.value
+	}`;
 };
 
 setupCurrencies();
 setupConvertListener();
+
+const error = document.getElementById('reset');
+
+error.addEventListener('click', () => {
+	errorSound.play();
+});
