@@ -118,6 +118,28 @@ button span:active {
 	border: 0.5px dotted black;
 }
 
+select,
+input {
+	height: 21px;
+	border: none;
+	box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf,
+		inset 2px 2px #0a0a0a;
+}
+
+input:focus {
+	outline: none;
+}
+
+select:focus {
+	background-color: var(--dialog-blue);
+	color: #fff;
+}
+
+option {
+	background-color: white;
+	color: black;
+}
+
 /* Utility Classes */
 
 .bold {
@@ -257,7 +279,7 @@ button span:active {
 }
 
 .modal-body label {
-	padding: 1rem 0;
+	padding: 1rem 0 0.25rem 0;
 }
 
 .header-bar {
@@ -280,5 +302,5 @@ button span:active {
 }
 
 .result {
-	margin-top: 10px;
+	margin-top: 30px;
 }
